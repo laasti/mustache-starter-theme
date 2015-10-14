@@ -1,0 +1,14 @@
+<nav>
+    <ol class="Breadcrumb">
+    {{#links}}
+        <li>
+            {{^active}}
+            <a href="{{{href}}}">{{label}}</a>
+            {{/active}}
+            {{#active}}
+            <strong>{{label}}</strong>
+            {{/active}}
+        </li>
+        {{/links}}
+    </ol>
+</nav>

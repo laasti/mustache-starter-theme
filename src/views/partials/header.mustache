@@ -1,0 +1,14 @@
+<header class="HEADER">
+    <div class="BRANDING">
+        <h1 class="BrandingText">{{sitename}}</h1>
+    </div>
+    <div class="MAIN_NAV">
+        {{#main_menu}}
+        <nav class="MainMenu">
+            {{> partials/menu}}
+        </nav>
+        {{/main_menu}}
+    </div>
+</header>
+{{>partials/breadcrumb}}
+<h1 class="MainTitle">{{page_title}}</h1>

@@ -1,0 +1,11 @@
+<fieldset name="{{ getName }}" {{{ getAttributes }}}>
+    {{#getLabel }}
+    <legend>{{ getLabel }}</legend>
+    {{/getLabel }}
+    {{#getFields}}
+        {{> partials/form/form-field }}
+    {{/getFields}}
+    {{#getGroups}}
+        {{> partials/form/form-group }}
+    {{/getGroups}}
+</fieldset>

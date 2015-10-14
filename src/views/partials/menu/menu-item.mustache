@@ -1,0 +1,12 @@
+{{#break}}
+</ul>
+<ul>
+{{/break}}
+<li {{{containerAttributes}}}>
+    <a href="{{{href}}}" {{{attributes}}}>{{label}}</a>
+    {{#menu}}
+    <div class="SubMenu">
+        {{>partials/menu/menu}}
+    </div>
+    {{/menu}}
+</li>

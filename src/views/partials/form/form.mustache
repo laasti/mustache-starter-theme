@@ -1,0 +1,10 @@
+<div  class="Form">
+    <form action="{{ form.getAction }}" method="{{ form.getMethod }}" {{{ form.getFormAttributes }}} novalidate>
+        {{# form.getFields }}
+        {{> partials/form/form-field }}
+        {{/ form.getFields }}
+        {{# form.getGroups }}
+        {{> partials/form/form-group }}
+        {{/ form.getGroups }}
+    </form>
+</div>

@@ -1,0 +1,21 @@
+{
+  "name": "laasti/mustache-theme",
+  "version": "0.1",
+  "authors": [
+    "Sonia Marquette <contact@nebulousweb.com>"
+  ],
+  "description": "A mustache starter theme with Gulp workflow to create HTML websites or use with your web framework ",
+  "keywords": [
+    "mustache",
+    "theme"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~1.10",
+    "normalize.css": "~3.0.2"
+  },
+  "ignore": {},
+  "overrides": {}
+}

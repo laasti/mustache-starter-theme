@@ -1,0 +1,167 @@
+
+// Calculates a em size from the given font size to the new size
+// - Example: giving a 24 font size and a new size of 12 would return 0.5em
+// @param $fontSize Current fontsize in pixels for the element's parent
+// @param $new_size The size in pixels which the neew element should have
+// @return New Size in EMs
+@function em_size($fontSize, $new_size) {
+    @return $new_size/$fontSize*1em;
+}
+
+// Calculates a % size from the given context size to the target size
+// - Example: giving a 600 context and a new size of 300 would return 50%
+// @param $pContext Current fontsize in pixels for the element's parent
+// @param $pTarget The size in pixels which the neew element should have
+// @return New Size in %
+@function pct_size($pContext, $pTarget) {
+    @return $pTarget/$pContext*100%;
+}
+
+// Returns a path to an image
+// @param $img Image path relative to the value of $image_path
+// @return CSS comple url to the image
+@function base_url($img) {
+    @return url(#{$image_path}#{$img});
+}
+
+// Replaces text with a background image
+// @uses base_url()
+// @param $width Width of the image to display
+// @param $height Height of the image to display
+// @param $image Image path for base_url() to replace text
+@mixin replace_text($width, $height, $image) {
+    display:block;
+    width: $width;
+    height: $height;
+    background: base_url($image);
+    text-indent:-99999px;
+}
+
+// Echoes a margin property in EMs
+// @param $fontSize Font-size to base the EMs on
+// @param $margin1,... Margins using the same logic as the margin property, you can specify 1, 2, 3 or 4 sizes
+@mixin em_margin($fontSize, $margin1, $margin2:null, $margin3:null, $margin4:null) {
+    @if $margin1 != 0 {$margin1: em_size($fontSize, $margin1);}
+    @if $margin2 != 0 and $margin2 != null {$margin2: em_size($fontSize, $margin2);}
+    @if $margin3 != 0 and $margin3 != null {$margin3: em_size($fontSize, $margin3);}
+    @if $margin4 != 0 and $margin4 != null {$margin4: em_size($fontSize, $margin4);}
+
+    @if ($margin1 == $margin2 and $margin1 == $margin3 and $margin4 == $margin1) or $margin2 == null {margin: $margin1;}
+    @elseif ($margin1 == $margin3 and $margin2 == $margin4) or ($margin2 != null and $margin3 == null and $margin4 == null) {margin: $margin1 $margin2;}
+    @elseif ($margin2 == $margin4) or ($margin2 != null and $margin3 != null and $margin4 == null)  {margin: $margin1 $margin2 $margin3;}
+    @else {margin: $margin1 $margin2 $margin3 $margin4;}
+}
+
+// Echoes a padding property in EMs
+// @param $fontSize Font-size to base the EMs on
+// @param $padding1,... Paddings using the same logic as the padding property, you can specify 1, 2, 3 or 4 sizes
+@mixin em_padding($fontSize, $padding1, $padding2:null, $padding3:null, $padding4:null) {
+    @if $padding1 != 0 {$padding1: em_size($fontSize, $padding1);}
+    @if $padding2 != 0 and $padding2 != null {$padding2: em_size($fontSize, $padding2);}
+    @if $padding3 != 0 and $padding3 != null {$padding3: em_size($fontSize, $padding3);}
+    @if $padding4 != 0 and $padding4 != null {$padding4: em_size($fontSize, $padding4);}
+
+    @if ($padding1 == $padding2 and $padding1 == $padding3 and $padding4 == $padding1) or $padding2 == null {padding: $padding1;}
+    @elseif ($padding1 == $padding3 and $padding2 == $padding4) or ($padding2 != null and $padding3 == null and $padding4 == null) {padding: $padding1 $padding2;}
+    @elseif ($padding2 == $padding4) or ($padding2 != null and $padding3 != null and $padding4 == null)  {padding: $padding1 $padding2 $padding3;}
+    @else {padding: $padding1 $padding2 $padding3 $padding4;}
+}
+
+// Echoes a margin property in %
+// @param $pContext Context size (equivalent to 100%)
+// @param $margin1,... Margins relative to context using the same logic as the margin property, you can specify 1, 2, 3 or 4 sizes
+@mixin pct_margin($pContext, $margin1, $margin2:null, $margin3:null, $margin4:null) {
+    @if $margin1 != 0 {$margin1: pct_size($pContext, $margin1);}
+    @if $margin2 != 0 and $margin2 != null {$margin2: pct_size($pContext, $margin2);}
+    @if $margin3 != 0 and $margin3 != null {$margin3: pct_size($pContext, $margin3);}
+    @if $margin4 != 0 and $margin4 != null {$margin4: pct_size($pContext, $margin4);}
+
+    @if ($margin1 == $margin2 and $margin1 == $margin3 and $margin4 == $margin1) or $margin2 == null {margin: $margin1;}
+    @elseif ($margin1 == $margin3 and $margin2 == $margin4) or ($margin2 != null and $margin3 == null and $margin4 == null) {margin: $margin1 $margin2;}
+    @elseif ($margin2 == $margin4) or ($margin2 != null and $margin3 != null and $margin4 == null)  {margin: $margin1 $margin2 $margin3;}
+    @else {margin: $margin1 $margin2 $margin3 $margin4;}
+}
+
+// Echoes a padding property in %
+// @param $pContext Context size (equivalent to 100%)
+// @param $padding1,... Paddings relative to context using the same logic as the padding property, you can specify 1, 2, 3 or 4 sizes
+@mixin pct_padding($pContext, $padding1, $padding2:null, $padding3:null, $padding4:null) {
+    @if $padding1 != 0 {$padding1: pct_size($pContext, $padding1);}
+    @if $padding2 != 0 and $padding2 != null {$padding2: pct_size($pContext, $padding2);}
+    @if $padding3 != 0 and $padding3 != null {$padding3: pct_size($pContext, $padding3);}
+    @if $padding4 != 0 and $padding4 != null {$padding4: pct_size($pContext, $padding4);}
+
+    @if ($padding1 == $padding2 and $padding1 == $padding3 and $padding4 == $padding1) or $padding2 == null {padding: $padding1;}
+    @elseif ($padding1 == $padding3 and $padding2 == $padding4) or ($padding2 != null and $padding3 == null and $padding4 == null) {padding: $padding1 $padding2;}
+    @elseif ($padding2 == $padding4) or ($padding2 != null and $padding3 != null and $padding4 == null)  {padding: $padding1 $padding2 $padding3;}
+    @else {padding: $padding1 $padding2 $padding3 $padding4;}
+}
+
+// Echoes a crossbrowser background gradient
+// - Use in conjoncture with PIE for support in IE9 and less if filters are disabled
+// @param $color1 Gradient beginning color
+// @param $color2 Gradient ending color
+// @param $vertical Whether the gradient is vertical(1) or horizontal(0)
+// @param $filter Whether to use filters(1) or not(0) for IE
+@mixin gradient($color1, $color2, $vertical:1, $filter:1) {
+    background: $color1; /* Old browsers */
+    @if ($vertical == 1)  {
+        background: -moz-linear-gradient(top,  $color1 0%, $color2 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color1), color-stop(100%,$color2)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  $color1 0%,$color2 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  $color1 0%,$color2 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  $color1 0%,$color2 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  $color1 0%,$color2 100%); /* W3C */
+    } @else {
+        background: -moz-linear-gradient(left,  $color1 0%, $color2 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,$color1), color-stop(100%,$color2)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left,  $color1 0%,$color2 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left,  $color1 0%,$color2 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left,  $color1 0%,$color2 100%); /* IE10+ */
+        background: linear-gradient(to right,  $color1 0%,$color2 100%); /* W3C */
+    }
+    @if ($filter == 1) {
+        $horizontal: 0;
+        @if ($vertical != 1) {
+             $horizontal: 1;
+        }
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#{$color1}", endColorstr="#{$color2}",GradientType=#{$horizontal} ); /* IE6-9 */
+    }
+}
+
+// Creates a CSS only arrow
+// @param $color The arrow color
+// @param $direction top|right|bottom|left Specify the opposite direction of what you want
+// @param $width A valid border-width value
+@mixin arrow($color, $direction, $width) {
+    display:inline-block;width:0;height:0;
+    border: solid transparent;
+    border: solid rgba($color,0);
+    border-width:$width;
+    border-#{$direction}-color:$color;
+}
+
+@mixin clearfix {
+    &:after {
+        content: " "; /* Older browser do not support empty content */
+        display: block;
+        clear: both;
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+@mixin hidden() {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+@mixin no-text() {
+    //Kellum Method
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}

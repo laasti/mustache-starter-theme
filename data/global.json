@@ -1,0 +1,17 @@
+{
+    "sitename": "Laasti Starter Theme",
+    "home_url": "/",
+    "locale": "en",
+    "typekit_id": null,
+    "ga_code": null,
+    "head_end": null,
+    "body_start": null,
+    "body_end": null,
+    "assets_url": "/assets",
+    "stylesheets_external": [],
+    "stylesheets": [],
+    "scripts_head": [],
+    "scripts_head_external": [],
+    "scripts_external": [],
+    "scripts": []   
+}

@@ -1,0 +1,50 @@
+{
+    "tasksDir": "./tasks",
+    "compileDirs": {
+        "dist": "./dist",
+        "publish": "./publish",
+        "public": "./public"
+    },
+    "assetsDir": "/assets",
+    "data": {
+        "glob": "./data/**/*.json",
+        "replaceBase": "./data/",
+        "globalFile": "global.json"
+    },
+    "browserSync": {
+        "index": "index.html"
+    },
+    "images": {
+        "glob": "./src/images/**",
+        "outputDir": "/images"
+    },
+    "bower": {
+        "glob": "./vendor/**",
+        "installDir": "./bower_components",
+        "vendorDir": "./vendor",
+        "outputDir": "/vendor",
+        "concatFilename": "vendor.min"
+    },
+    "js": {
+        "glob": ["src/js/third-party/**/*.js", "src/js/*.js"],
+        "outputDir": "/js",
+        "concatFilename": "app.min.css"
+    },
+    "clean": {
+        "glob": ["**"]
+    },
+    "fontello": {
+        "glob": "./src/fontello/font/**",
+        "outputDir": "/fontello/font"
+    },
+    "views": {
+        "glob": "./src/views/**/*.mustache",
+        "outputDir": "/views"
+    },
+    "sass": {
+        "glob": "./src/scss/**",
+        "outputDir": "/css",
+        "concatFilename": "styles.min.css",
+        "browsers": ["last 5 versions", "> 2%", "ie 8", "safari 5"]
+    }
+}

@@ -1,0 +1,29 @@
+.pika-single {
+    border-radius:2px;
+}
+
+.pika-table {
+    margin:0;
+    th {color:$color_text;}
+}
+
+.pika-label {
+    vertical-align:middle;
+}
+.pika-title select {
+    top:0;margin-top:-2px;
+}
+
+.pika-button {
+    border:1px solid transparent;
+    border-radius:2px;
+    color:$color_text;
+    .is-today & {font-style:italic;color:$color_text;}
+    &:hover {color:$color_text;background:#eaeaea;}
+    .is-selected & {
+        color:$color_text;
+        box-shadow: 0px 1px 2px 0px #E5E5E5 inset;
+        border-color:$color_border;background:#fff;
+        cursor:default;
+    }
+}
