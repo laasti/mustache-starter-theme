@@ -13,7 +13,8 @@
         lazy: true,
         rename: {}
     });
-    options.compileDir = require(options.tasksDir+'/compileDir.js')(gulp, plugins, options);
+    options.compileDir = require(options.tasksDir+'/compileDir.js')(gulp, plugins, options)();
+
     plugins.data = require(options.tasksDir+'/data.js');
     
     gulp.task('serve', task('serve'));

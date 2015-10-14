@@ -31,7 +31,7 @@
         "concatFilename": "app.min.css"
     },
     "clean": {
-        "glob": ["/**"]
+        "glob": ["/**/*"]
     },
     "fontello": {
         "glob": "./src/fontello/font/**",
