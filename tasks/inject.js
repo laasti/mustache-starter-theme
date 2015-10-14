@@ -11,12 +11,9 @@ module.exports = function (gulp, plugins, opts) {
 
 
         return gulp.src(compile_folder + opts.views.glob)
-                .pipe(inject(gulp.src('/js/ckeditor/ckeditor.js', {read: false, base: assets_folder}), {name: 'theme-head', transform: js_inject}))
-                .pipe(inject(gulp.src([
-                    '/js/**',
-                    '!/js/ckeditor/**'
-                ], {read: false, base: assets_folder}), {name: 'theme', transform: js_inject}))
-                .pipe(inject(gulp.src(assets_folder + '/css/**', {read: false}), {name: 'theme', transform: css_inject}))
+                .pipe(plugins.inject(gulp.src(opts.inject.js_head.glob, {read: false, base: assets_folder}), {name: 'theme-head', transform: js_inject}))
+                .pipe(plugins.inject(gulp.src(opts.inject.js.glob, {read: false, base: assets_folder}), {name: 'theme', transform: js_inject}))
+                .pipe(plugins.inject(gulp.src(opts.inject.css.glob, {read: false, base: assets_folder}), {name: 'theme', transform: css_inject}))
                 .pipe(gulp.dest(compile_folder + opts.views.outputDir));
     };
 };

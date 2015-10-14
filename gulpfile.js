@@ -49,7 +49,7 @@
         gulp.watch('./src/scss/**', ['sass']);
         gulp.watch('./src/js/**', ['js']);
         gulp.watch('./src/views/**/*.mustache', task('views_copy'));
-        gulp.watch(compile_folder + '/views/**/*.mustache', task('mustache'));
+        gulp.watch(options.compileDir + '/views/**/*.mustache', task('mustache'));
     });
     gulp.task('watch', ['serve', 'sync']);
 }(require));

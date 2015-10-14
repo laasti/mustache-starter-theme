@@ -25,6 +25,20 @@
         "outputDir": "/vendor",
         "concatFilename": "vendor.min"
     },
+    "inject": {
+        "css": {
+            "glob": "/css/**"
+        },
+        "js": {
+            "glob": [
+                "/js/**",
+                "!/js/ckeditor/**"
+            ]
+        },
+        "js_head": {
+            "glob": "/js/ckeditor/ckeditor.js"
+        }
+    },
     "js": {
         "glob": ["src/js/third-party/**/*.js", "src/js/*.js"],
         "outputDir": "/js",
@@ -39,6 +53,7 @@
     },
     "views": {
         "glob": "./src/views/**/*.mustache",
+        "compileGlob": "/views/*.mustache",
         "outputDir": "/views"
     },
     "sass": {
