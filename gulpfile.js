@@ -13,6 +13,7 @@
         lazy: true,
         rename: {}
     });
+    plugins.fs = require('fs');
     options.compileDir = require(options.tasksDir+'/compileDir.js')(gulp, plugins, options)();
 
     plugins.data = require(options.tasksDir+'/data.js');
@@ -41,7 +42,8 @@
     gulp.task('html', ['copy_views'], task('mustache'));
 
     gulp.task('default', ['build']);
-    gulp.task('publish', ['build'], task('mustache'));
+    gulp.task('pages', task('pages'));
+    gulp.task('publish', ['build'], task('pages'));
 
     gulp.task('sync', function () {
         gulp.watch('./src/fontello/**', ['fontello']);

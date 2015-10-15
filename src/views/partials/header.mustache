@@ -5,10 +5,12 @@
     <div class="MAIN_NAV">
         {{#main_menu}}
         <nav class="MainMenu">
-            {{> partials/menu}}
+            {{> menu/menu}}
         </nav>
         {{/main_menu}}
     </div>
 </header>
-{{>partials/breadcrumb}}
-<h1 class="MainTitle">{{page_title}}</h1>
+{{#breadcrumb}}
+    {{> breadcrumb }}
+{{/breadcrumb}}
+    <h1 class="MainTitle">{{page_title}}</h1>

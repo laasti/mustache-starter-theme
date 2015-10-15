@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         {{#meta.title}}
         <title>{{meta.title}}</title>
+        {{/meta.title}}
         {{^meta.title}}
         <title>{{sitename}} | {{title}}</title>
         {{/meta.title}}
@@ -12,9 +13,19 @@
         
         {{#meta}}
         {{#description}}<meta name="description" content="{{description}}" />{{/description}}
-        <meta name="twitter:card" value="{{#twitter.type}}{{twitter.type}}{{^twitter.type}}summary{{/twitter.type}}"> 
+        {{#twitter.type}}
+        <meta name="twitter:card" value="{{twitter.type}}" />
+        {{/twitter.type}}
+        {{^twitter.type}}
+        <meta name="twitter:card" value="summary" />
+        {{/twitter.type}}
         {{#og.title}}<meta property="og:title" content="{{og.title}}" />{{/og.title}}
-        <meta property="og:type" content="{{#og.type}}{{og.type}}{{^og.type}}article{{/og.type}}" />
+        {{#og.type}}
+        <meta property="og:type" content="{{og.type}}" />
+        {{/og.type}}
+        {{^og.type}}
+        <meta property="og:type" content="article" />
+        {{/og.type}}
         {{#og.url}}<meta property="og:image" content="{{og.url}}" />{{/og.url}}
         {{#og.image}}<meta property="og:image" content="{{og.image}}" />{{/og.image}}
         {{#og.description}}<meta property="og:description" content="{{og.description}}" />{{/og.description}}
@@ -49,7 +60,7 @@
     <body class="PAGE">
         {{{body_start}}}
         <!--[if lte IE 9]>
-            <p class="OutdatedBrowser">{{lang.outdated_browser}}</p>
+            <p class="OutdatedBrowser">{{{lang.outdated_browser}}}</p>
         <![endif]-->
         <noscript>
         {{lang.javascript_required}}

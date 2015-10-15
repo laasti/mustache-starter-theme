@@ -7,9 +7,17 @@
     },
     "assetsDir": "/assets",
     "data": {
+        "langDir": "./lang",
+        "langMainFile": "messages.json",
         "glob": "./data/**/*.json",
         "replaceBase": "./data/",
-        "globalFile": "global.json"
+        "globalFile": "global.json",
+        "templateVar": "template",
+        "titleVar": "page_title",
+        "contentVar": "content"
+    },
+    "pages": {
+        "glob": "./pages/**/*"
     },
     "browserSync": {
         "index": "index.html"
@@ -42,17 +50,19 @@
     "js": {
         "glob": ["src/js/third-party/**/*.js", "src/js/*.js"],
         "outputDir": "/js",
-        "concatFilename": "app.min.css"
+        "concatFilename": "app.min.js"
     },
     "clean": {
         "glob": ["/**/*"]
     },
     "fontello": {
-        "glob": "./src/fontello/font/**",
+        "baseDir": "./src/fontello",
+        "glob": "/font/**",
         "outputDir": "/fontello/font"
     },
     "views": {
-        "glob": "./src/views/**/*.mustache",
+        "baseDir": "./src/views",
+        "glob": "/**/*.mustache",
         "compileGlob": "/views/*.mustache",
         "outputDir": "/views"
     },

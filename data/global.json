@@ -1,5 +1,6 @@
 {
     "sitename": "Laasti Starter Theme",
+    "template": "content.mustache",
     "home_url": "/",
     "locale": "en",
     "typekit_id": null,
@@ -7,6 +8,9 @@
     "head_end": null,
     "body_start": null,
     "body_end": null,
+    "meta": {
+        "og": {}
+    },
     "assets_url": "/assets",
     "stylesheets_external": [],
     "stylesheets": [],
