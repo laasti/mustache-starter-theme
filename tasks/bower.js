@@ -29,7 +29,7 @@ module.exports = function (gulp, plugins, opts) {
                     .pipe(onlyDirs(plugins.eventStream))
                     .pipe(gulp.dest(assets_folder + opts.bower.outputDir));
         } else {
-            return gulp.src("./vendor/**").pipe(gulp.dest(assets_folder + "/vendor"));
+            return gulp.src(opts.bower.glob).pipe(gulp.dest(assets_folder + opts.bower.outputDir));
         }
     };
 };

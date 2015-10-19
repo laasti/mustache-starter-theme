@@ -9,6 +9,7 @@ module.exports = function (gulp, plugins, opts) {
                 data[opts.data.contentVar] = data.body;
                 delete data.body;
                 data = plugins.merge.recursive(global_data, data);
+                data.lang = data.languages[data.locale];
                 var mustacheStream = plugins.mustache(data, {extension: ".html"});
                 mustacheStream.once('data', function(newFile) {
                     file.contents = newFile.contents;

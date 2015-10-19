@@ -21,10 +21,10 @@ module.exports = function (gulp, plugins, opts) {
                 current_data[i] = content[i];
             }
         });
-        data.lang = {};
-        var lang_files = plugins.glob.sync(opts.data.langDir+'/'+data.locale+'/**/*.json');
+        data.languages = {};
+        var lang_files = plugins.glob.sync(opts.data.langDir+'/**/*.json');
         lang_files.map(function (file) {
-            var filename = file.replace(opts.data.langDir+'/'+data.locale+'/', '');
+            var filename = file.replace(opts.data.langDir+'/', '');
             var content = JSON.parse(plugins.fs.readFileSync(file, 'utf8'));
             var path = [];
             if (filename !== opts.data.langMainFile) {
@@ -32,7 +32,7 @@ module.exports = function (gulp, plugins, opts) {
                 //Remove json
                 path.pop();
             }
-            var current_data = data.lang;
+            var current_data = data.languages;
             for (var i = 0; i < path.length; i++) {
                 current_data[path[i]] = {};
                 current_data = current_data[path[i]];

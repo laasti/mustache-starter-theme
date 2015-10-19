@@ -10,7 +10,7 @@ module.exports = function (gulp, plugins, opts) {
                     return '<script type="text/javascript" src="' + filepath.replace(assets_folder.replace('./', '/'), '{{{ assets_url }}}') + '"></script>';
                 };
 
-        return gulp.src(compile_folder + opts.views.compileGlob)
+        return gulp.src(opts.views.compileGlob, {root: compile_folder})
                 .pipe(plugins.mustache(data, {extension: ".html"}))
                 .pipe(gulp.dest(compile_folder))
                 .pipe(plugins.browserSync.reload({stream: true}));

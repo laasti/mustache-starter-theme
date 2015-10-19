@@ -23,7 +23,8 @@
         "index": "index.html"
     },
     "images": {
-        "glob": "./src/images/**",
+        "glob": "./**",
+        "workingDir": "./src/images",
         "outputDir": "/images"
     },
     "bower": {
@@ -35,35 +36,36 @@
     },
     "inject": {
         "css": {
-            "glob": "/css/**"
+            "glob": "./css/**"
         },
         "js": {
             "glob": [
-                "/js/**",
-                "!/js/ckeditor/**"
+                "./js/**",
+                "!./js/ckeditor/**"
             ]
         },
         "js_head": {
-            "glob": "/js/ckeditor/ckeditor.js"
+            "glob": "./js/ckeditor/ckeditor.js"
         }
     },
     "js": {
-        "glob": ["src/js/third-party/**/*.js", "src/js/*.js"],
+        "glob": ["./third-party/**/*.js", "./*.js"],
+        "workingDir": "./src/js",
         "outputDir": "/js",
         "concatFilename": "app.min.js"
     },
     "clean": {
-        "glob": ["/**/*"]
+        "glob": ["./**/*"]
     },
     "fontello": {
-        "baseDir": "./src/fontello",
-        "glob": "/font/**",
+        "workingDir": "./src/fontello",
+        "glob": "./font/**",
         "outputDir": "/fontello/font"
     },
     "views": {
-        "baseDir": "./src/views",
-        "glob": "/**/*.mustache",
-        "compileGlob": "/views/*.mustache",
+        "workingDir": "./src/views",
+        "glob": "./**/*.mustache",
+        "compileGlob": "./views/*.mustache",
         "outputDir": "/views"
     },
     "sass": {
