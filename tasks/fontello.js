@@ -1,5 +1,6 @@
 module.exports = function (gulp, plugins, opts) {
     return function () {
-        return gulp.src(opts.fontello.baseDir+opts.fontello.glob).pipe(gulp.dest(opts.compileDir + opts.fontello.outputDir));
+        var assets_folder = opts.compileDir+opts.assetsDir;
+        return gulp.src(opts.fontello.glob, {cwd: opts.fontello.workingDir}).pipe(gulp.dest(assets_folder + opts.fontello.outputDir));
     };
 };

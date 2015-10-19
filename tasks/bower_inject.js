@@ -12,12 +12,12 @@ module.exports = function (gulp, plugins, opts) {
 
 
         if (args.dist) {
-            return gulp.src(compile_folder + opts.views.outputDir + opts.views.glob)
-                    .pipe(plugins.inject(gulp.src(assets_folder + opts.bower.outputDir+'/**/*.js', {read: false}), {name: 'bower', transform: js_inject}))
-                    .pipe(plugins.inject(gulp.src(assets_folder + opts.bower.outputDir+'/**/*.css', {read: false}), {name: 'bower', transform: css_inject}))
+            return gulp.src(opts.views.glob, {cwd: compile_folder + opts.views.outputDir})
+                    .pipe(plugins.inject(gulp.src('./**/*.js', {read: false, cwd: assets_folder + opts.bower.outputDir}), {name: 'bower', transform: js_inject}))
+                    .pipe(plugins.inject(gulp.src('./**/*.css', {read: false, cwd: assets_folder + opts.bower.outputDir}), {name: 'bower', transform: css_inject}))
                     .pipe(gulp.dest(compile_folder + opts.views.outputDir));
         } else {
-            return gulp.src(compile_folder + opts.views.outputDir + opts.views.glob)
+            return gulp.src(opts.views.glob, {cwd: compile_folder + opts.views.outputDir})
                     .pipe(plugins.inject(gulp.src(bower_files.ext('js').files, {read: false, base: opts.bower.installDir}), {name: 'bower', transform: js_inject}))
                     .pipe(plugins.inject(gulp.src(bower_files.ext('css').files, {read: false, base: opts.bower.installDir}), {name: 'bower', transform: css_inject}))
                     .pipe(gulp.dest(compile_folder + opts.views.outputDir));
