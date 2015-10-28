@@ -1,5 +1,5 @@
 module.exports = function (gulp, plugins, opts) {
-    var jsonToMustache = function(global_data) {
+    var jsonToMustache = function(global_data, partials) {
         function transform(file, cb) {
             
             if (file.isBuffer()) {
@@ -10,7 +10,7 @@ module.exports = function (gulp, plugins, opts) {
                 delete data.body;
                 data = plugins.merge.recursive(global_data, data);
                 data.lang = data.languages[data.locale];
-                var mustacheStream = plugins.mustache(data, {extension: ".html"});
+                var mustacheStream = plugins.mustache(data, {extension: ".html"}, partials);
                 mustacheStream.once('data', function(newFile) {
                     file.contents = newFile.contents;
                 });
@@ -30,13 +30,14 @@ module.exports = function (gulp, plugins, opts) {
     return function () {
         var compile_folder = opts.compileDir, args = plugins.yargs.argv,
                 data = plugins.data(gulp, plugins, opts)(),
+                partials = plugins.partials(gulp, plugins, opts)(),
                 filter = plugins.filter(['**/*.html', '**/*.md'], {restore: true});
 
         return gulp.src(opts.pages.glob)
                 .pipe(filter)
                 .pipe(plugins.markitJson())
                 .pipe(filter.restore)
-                .pipe(jsonToMustache(data))
+                .pipe(jsonToMustache(data, partials))
                 .pipe(plugins.htmlPrettify({indent_char: ' ', indent_size: 4}))
                 .pipe(plugins.removeEmptyLines())
                 .pipe(plugins.rename({extname:'.html'}))

@@ -66,6 +66,8 @@
         "workingDir": "./src/views",
         "glob": "./**/*.mustache",
         "compileGlob": "./views/*.mustache",
+        "partialsGlob": "./partials/**/*.mustache",
+        "replaceBase": "./partials/",
         "outputDir": "/views"
     },
     "sass": {

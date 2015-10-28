@@ -1,11 +1,11 @@
-<fieldset name="{{ getName }}" {{{ getAttributes }}}>
-    {{#getLabel }}
-    <legend>{{ getLabel }}</legend>
-    {{/getLabel }}
-    {{#getFields}}
-        {{> form-field }}
-    {{/getFields}}
-    {{#getGroups}}
-        {{> form-group }}
-    {{/getGroups}}
+<fieldset name="{{ name }}" {{{ attributes }}}>
+    {{#label }}
+    <legend>{{ label }}</legend>
+    {{/label }}
+    {{#fields}}
+        {{> form/form-field }}
+    {{/fields}}
+    {{#groups}}
+        {{> form/form-group }}
+    {{/groups}}
 </fieldset>

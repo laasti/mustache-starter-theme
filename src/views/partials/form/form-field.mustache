@@ -1,14 +1,14 @@
-<div {{{ getContainerAttributes }}}>
+<div {{{ containerAttributes }}}>
     {{# hasLabel }}
-        <label class="form-label" for="{{ getId }}">{{ getLabel }}</label>
+        <label class="form-label" for="{{ id }}">{{ label }}</label>
     {{/ hasLabel }}
     {{# hasFakeLabel }}
-        <span class="form-label">{{ getLabel }}</span>
+        <span class="form-label">{{ label }}</span>
     {{/ hasFakeLabel }}
     <div class="form-control">
-    {{{ getControl }}}
+    {{{ control }}}
     </div>
-    {{#getError}}
+    {{#error}}
         <strong class="form-field-error icon-minus-circle">{{.}}</strong>
-    {{/getError}}
+    {{/error}}
 </div>

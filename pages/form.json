@@ -1,0 +1,19 @@
+{
+    "title": "Form example",
+    "template": "form.mustache",
+    "content": "<p>JSON is awesome</p>",
+    "form": {
+        "method": "post",
+        "action": "",
+        "fields": [
+            {
+                "hasLabel": true,
+                "id": "email",
+                "label": "E-mail address",
+                "control": "<input type='email' name='email' id='email' />",
+                "error": "Invalid e-mail address."
+            }
+        ],
+        "groups": []
+    }
+}

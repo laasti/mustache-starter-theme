@@ -3,62 +3,62 @@
     <head>
         <meta charset="utf-8">
         {{#meta.title}}
-        <title>{{meta.title}}</title>
+        <title>{{.}}</title>
         {{/meta.title}}
         {{^meta.title}}
         <title>{{sitename}} | {{title}}</title>
         {{/meta.title}}
-        
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
         {{#meta}}
-        {{#description}}<meta name="description" content="{{description}}" />{{/description}}
+        {{#description}}<meta name="description" content="{{.}}" />{{/description}}
         {{#twitter.type}}
-        <meta name="twitter:card" value="{{twitter.type}}" />
+        <meta name="twitter:card" value="{{.}}" />
         {{/twitter.type}}
         {{^twitter.type}}
         <meta name="twitter:card" value="summary" />
         {{/twitter.type}}
-        {{#og.title}}<meta property="og:title" content="{{og.title}}" />{{/og.title}}
-        {{#og.type}}
-        <meta property="og:type" content="{{og.type}}" />
-        {{/og.type}}
-        {{^og.type}}
+        {{#og}}
+        {{#title}}<meta property="og:title" content="{{.}}" />{{/title}}
+        {{#type}}
+        <meta property="og:type" content="{{.}}" />
+        {{/type}}
+        {{^type}}
         <meta property="og:type" content="article" />
-        {{/og.type}}
-        {{#og.url}}<meta property="og:image" content="{{og.url}}" />{{/og.url}}
-        {{#og.image}}<meta property="og:image" content="{{og.image}}" />{{/og.image}}
-        {{#og.description}}<meta property="og:description" content="{{og.description}}" />{{/og.description}}
+        {{/type}}
+        {{#url}}<meta property="og:image" content="{{.}}" />{{/url}}
+        {{#image}}<meta property="og:image" content="{{.}}" />{{/image}}
+        {{#description}}<meta property="og:description" content="{{.}}" />{{/description}}
+        {{/og}}
         {{/meta}}
         
-        {{#typekit_id}}
-        <script type="text/javascript" src="//use.typekit.net/{{typekit_id}}.js"></script>
+        {{#typekit}}
+        <script type="text/javascript" src="//use.typekit.net/{{.}}.js"></script>
         <script type="text/javascript">try {Typekit.load();} catch (e) {}</script>
-        {{/typekit_id}}
+        {{/typekit}}
         
-        {{#stylesheets_external}}
+        {{#stylesheets.external}}
         <link rel="stylesheet" type="text/css" href="{{{src}}}" media="{{media}}" />
-        {{/stylesheets_external}}
+        {{/stylesheets.external}}
         <!-- bower:css -->
         <!-- endinject -->
         <!-- theme:css -->
         <!-- endinject -->
-        {{#stylesheets}}
-        <link rel="stylesheet" type="text/css" href="{{{assets_url}}}{{{src}}}" media="{{media}}" />
-        {{/stylesheets}}
+        {{#stylesheets.local}}
+        <link rel="stylesheet" type="text/css" href="{{{assetsUrl}}}{{{src}}}" media="{{media}}" />
+        {{/stylesheets.local}}
         
-        {{#scripts_head_external}}
+        {{#scripts.head.external}}
         <script type="text/javascript" src="{{{.}}}"></script>
-        {{/scripts_head_external}}
+        {{/scripts.head.external}}
         <!-- theme-head:js -->
         <!-- endinject -->
-        {{#scripts_head}}
-        <script type="text/javascript" src="{{{assets_url}}}{{{.}}}"></script>
-        {{/scripts_head}}
-        {{{head_end}}}
+        {{#scripts.head.local}}
+        <script type="text/javascript" src="{{{assetsUrl}}}{{{.}}}"></script>
+        {{/scripts.head.local}}
+        {{{head}}}
     </head>
     <body class="PAGE">
-        {{{body_start}}}
+        {{{bodyStart}}}
         <!--[if lte IE 9]>
             <p class="OutdatedBrowser">{{{lang.outdated_browser}}}</p>
         <![endif]-->

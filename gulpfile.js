@@ -17,6 +17,7 @@
     options.compileDir = require(options.tasksDir+'/compileDir.js')(gulp, plugins, options)();
 
     plugins.data = require(options.tasksDir+'/data.js');
+    plugins.partials = require(options.tasksDir+'/partials.js');
     
     gulp.task('serve', task('serve'));
     gulp.task('bower_main_files', task('bower_main'));
@@ -37,12 +38,12 @@
     gulp.task('publish',  gulp.series('build', task('pages')));
 
     gulp.task('sync', function () {
-        gulp.watch('./src/fontello/**', 'fontello');
-        gulp.watch('./src/images/**', 'images');
-        gulp.watch('./src/scss/**', 'sass');
-        gulp.watch('./src/js/**', 'js');
-        gulp.watch('./src/views/**/*.mustache', 'copy_views');
-        gulp.watch(options.compileDir + '/views/**/*.mustache', 'pages');
+        gulp.watch('./src/fontello/**', gulp.parallel('fontello'));
+        gulp.watch('./src/images/**', gulp.parallel('images'));
+        gulp.watch('./src/scss/**', gulp.parallel('sass'));
+        gulp.watch('./src/js/**', gulp.parallel('js'));
+        gulp.watch('./src/views/**', gulp.parallel('copy_views'));
+        gulp.watch(options.compileDir + '/views/**', gulp.parallel('pages'));
     });
     gulp.task('watch', gulp.parallel('serve', 'sync'));
 }(require));

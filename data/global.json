@@ -1,21 +1,42 @@
 {
     "sitename": "Laasti Starter Theme",
     "template": "content.mustache",
-    "home_url": "/",
     "locale": "en",
-    "typekit_id": null,
-    "ga_code": null,
-    "head_end": null,
-    "body_start": null,
-    "body_end": null,
+    "typekit": null,
+    "ga": null,
+    "head": null,
+    "bodyStart": null,
+    "bodyEnd": null,
+    "menus": {
+        "main": {
+            "links": [
+                {
+                    "break": false,
+                    "href": "",
+                    "label": "Accueil"
+                },
+                {
+                    "break": false,
+                    "href": "",
+                    "label": "Hello"
+                }
+            ]
+        }
+    },
     "meta": {
         "og": {}
     },
-    "assets_url": "/assets",
-    "stylesheets_external": [],
-    "stylesheets": [],
-    "scripts_head": [],
-    "scripts_head_external": [],
-    "scripts_external": [],
-    "scripts": []   
+    "assetsUrl": "/assets",
+    "stylesheets": {
+        "external" : [],
+        "local" : []
+    },
+    "scripts": {
+        "head": {
+            "external": [],
+            "local": []
+        },
+        "external": [],
+        "local": []
+    }
 }

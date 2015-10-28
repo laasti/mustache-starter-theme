@@ -3,14 +3,14 @@
         <h1 class="BrandingText">{{sitename}}</h1>
     </div>
     <div class="MAIN_NAV">
-        {{#main_menu}}
+        {{#menus.main}}
         <nav class="MainMenu">
             {{> menu/menu}}
         </nav>
-        {{/main_menu}}
+        {{/menus.main}}
     </div>
 </header>
 {{#breadcrumb}}
     {{> breadcrumb }}
 {{/breadcrumb}}
-    <h1 class="MainTitle">{{page_title}}</h1>
+    <h1 class="MainTitle">{{title}}</h1>
