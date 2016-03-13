@@ -18,8 +18,8 @@
 
     plugins.data = require(options.tasksDir+'/data.js');
     plugins.partials = require(options.tasksDir+'/partials.js');
-
-    gulp.task('serve', task('serve'));
+	gulp.task('install', gulp.series(plugins.shell.task(['bower install']), 'bower', 'publish'));
+    gulp.task('serve', gulp.series('publish', task('serve')));
     gulp.task('bower_main_files', task('bower_main'));
     gulp.task('clean', task('clean'));
     gulp.task('bower', gulp.series('bower_main_files', task('bower')));
@@ -48,7 +48,6 @@
         gulp.watch('./src/views/**', gulp.series('copy_views', 'inject_bower', 'inject_assets'));
         gulp.watch('./data/**', gulp.parallel('pages'));
         gulp.watch('./pages/**', gulp.parallel('pages'));
-        gulp.watch('./../../shared/theme/src/**', gulp.series('update_base_theme', 'update'));
     });
     gulp.task('syncWatch', function () {
         gulp.watch('./src/fontello/**', gulp.parallel('fontello'));
@@ -58,7 +57,6 @@
         gulp.watch('./src/views/**', gulp.series('copy_views', 'inject_bower', 'inject_assets', 'pages'));
         gulp.watch('./data/**', gulp.parallel('pages'));
         gulp.watch('./pages/**', gulp.parallel('pages'));
-        gulp.watch('./../../shared/theme/src/**', gulp.series('update_base_theme', 'update'));
     });
-    gulp.task('watch', gulp.series('publish', gulp.parallel('serve', 'syncWatch')));
+    gulp.task('watch', gulp.parallel('serve', 'syncWatch'));
 }(require));
