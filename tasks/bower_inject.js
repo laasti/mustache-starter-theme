@@ -4,10 +4,10 @@ module.exports = function (gulp, plugins, opts) {
             assets_folder = opts.compileDir+opts.assetsDir,
             bower_files = plugins.bowerFiles(),
             css_inject = function (filepath, file, i, length) {
-                return '<link rel="stylesheet" href="' + filepath.replace(opts.bower.installDir.replace('.', ''), '{{{ assetsUrl }}}/vendor') + '" />';
+                return '<link rel="stylesheet" href="{{{ assetsUrl }}}/vendor' + filepath.replace(opts.bower.installDir.replace('.', ''), '') + '" />';
             },
             js_inject = function (filepath, file, i, length) {
-                return '<script type="text/javascript" src="' + filepath.replace(opts.bower.installDir.replace('.', ''), '{{{ assetsUrl }}}/vendor') + '"></script>';
+                return '<script type="text/javascript" src="{{{ assetsUrl }}}/vendor' + filepath.replace(opts.bower.installDir.replace('.', ''), '') + '"></script>';
             };
 
 

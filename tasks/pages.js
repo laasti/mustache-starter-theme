@@ -4,10 +4,14 @@ module.exports = function (gulp, plugins, opts) {
             
             if (file.isBuffer()) {
                 var data = JSON.parse(String(file.contents));
-                data[opts.data.titleVar] = data.title;
-                delete data.title;
-                data[opts.data.contentVar] = data.body;
-                delete data.body;
+                if (opts.data.titleVar !== 'title') {
+                    data[opts.data.titleVar] = data.title;
+                    delete data.title;
+                }
+                if (opts.data.contentVar !== 'body') {
+                    data[opts.data.contentVar] = data.body;
+                    delete data.body;
+                }
                 data = plugins.merge.recursive(global_data, data);
                 data.lang = data.languages[data.locale];
                 var mustacheStream = plugins.mustache(data, {extension: ".html"}, partials);

@@ -1,3 +1,9 @@
+---
+title: Styleguide
+template: content.mustache
+bodyClass: page-styleguide
+---
+
 <div id="typo" class="Section">
     <h2>Typographie</h2>
     <a href="#">Ceci est un lien</a><br/>
@@ -17,7 +23,7 @@
     <input type="button" class="Button button-alt" value="Un bouton 2" />
     <button class="Button button-alt" disabled>Un bouton 2</button>
 </div>
-<div id="lists" class="Section">
+<div id="lists" class="Section StyledLists">
     <h2>Listes</h2>
     <ul>
         <li>Ceci est une liste non-ordonnée</li>
@@ -60,47 +66,46 @@
 </div>
 <div id="content" class="Section">
     <h2>Contenu</h2>
-    <div class='Content content-media-thumbnail'>
-        <figure class='content-media'>
-            <img src='http://placehold.it/200x150' alt='' />
-            <figcaption class='content-media-caption'>
-                Cras risus dui, mollis id libero at, sodales gravida tortor.
-            </figcaption>
+    <div class="Content content-media-small content-media-left">
+        <figure class="content-media">
+        <div class="Media"><img alt="" src="http://placehold.it/350x150"></div>
+        <figcaption class="content-media-caption">Legend...</figcaption>
         </figure>
-        <div class='content-text'>
+        <div class="content-text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
+        <p>Integer sollicitudin felis et quam cursus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et rutrum ex. Curabitur eu ultricies leo, at tincidunt ante. Ut id risus velit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
+        </div>
+    </div>
+    <div class="Content content-media-medium content-media-right">
+        <figure class="content-media">
+        <div class="Media"><img alt="" src="http://placehold.it/500x300"></div>
+        <figcaption class="content-media-caption"></figcaption>
+        </figure>
+        <div class="content-text">
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
-            <p>Integer sollicitudin felis et quam cursus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et rutrum ex. Curabitur eu ultricies leo, at tincidunt ante. Ut id risus velit. </p>                           
+            <p>Integer sollicitudin felis et quam cursus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et rutrum ex. Curabitur eu ultricies leo, at tincidunt ante. Ut id risus velit. </p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
         </div>
     </div>
-    <div class='Content content-media-medium'>
-        <figure class='content-media'>
-            <img src='http://placehold.it/500x300' alt='' />
-            <figcaption class='content-media-caption'>
-                Cras risus dui, mollis id libero at, sodales gravida tortor.
-            </figcaption>
+    <div class="Content content-media-full content-media-none">
+        <figure class="content-media">
+        <div class="Media"><img alt="" src="http://placehold.it/1024x750"></div>
+        <figcaption class="content-media-caption">Cras risus dui, mollis id libero at, sodales gravida tortor.</figcaption>
         </figure>
-        <div class='content-text'>
+        <div class="content-text">
             <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
-            <p>Integer sollicitudin felis et quam cursus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et rutrum ex. Curabitur eu ultricies leo, at tincidunt ante. Ut id risus velit. </p>                           
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
-        </div>
-    </div>
-    <div class='Content content-media-large'>
-        <figure class='content-media'>
-            <img src='http://placehold.it/1024x750' alt='' />
-            <figcaption class='content-media-caption'>
-                Cras risus dui, mollis id libero at, sodales gravida tortor.
-            </figcaption>
-        </figure>
-        <div class='content-text'>
-            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam vulputate tincidunt. Aliquam bibendum tortor auctor odio cursus, vitae varius justo tempus. Phasellus rutrum, urna id faucibus fringilla, tortor urna luctus erat, ut pellentesque tellus arcu faucibus eros. In porttitor sodales sollicitudin. Maecenas accumsan volutpat tempus. Donec velit augue, interdum vel efficitur sed, suscipit eget nibh. Quisque congue tortor maximus nibh tempus, at blandit tortor fringilla. Fusce eu bibendum ligula. Duis cursus, nibh nec aliquam vulputate, purus enim eleifend purus, ultrices posuere metus arcu et est. Vestibulum vitae bibendum massa. Sed at mi eget dolor finibus viverra in sit amet lacus. Nulla commodo lorem massa, et tempus nunc aliquet vel. Aliquam bibendum turpis lectus, a convallis elit sagittis eu. Praesent eu metus felis. Etiam at auctor libero, at bibendum mauris. Duis consequat felis sit amet sem dictum aliquam. </p>
-            <p>Integer sollicitudin felis et quam cursus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et rutrum ex. Curabitur eu ultricies leo, at tincidunt ante. Ut id risus velit. </p>                           
+            <p>Integer sollicitudin felis et quam cursus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et rutrum ex. Curabitur eu ultricies leo, at tincidunt ante. Ut id risus velit. </p>
         </div>
     </div>
 </div>
+    <h2>Citation</h2>
+    <blockquote>
+        <p>Sed ac nibh sit amet nisl finibus porta ultricies nec nibh. Cras sed enim quis augue vestibulum condimentum id at turpis.  </p>
+        <cite>Wayne Lafleur, President</cite>
+    </blockquote>
 <div id="table" class="Section">
     <h2>Tableau</h2>
     <table>
@@ -127,7 +132,7 @@
 </div>
 <div id="form" class="Section">
     <h2>Formulaire</h2>
-    <form novalidate>
+    <form novalidate class="Form">
         <input type="text" placeholder="Text" />
         <input type="text" value="Text" />
         <input type="password" value="Password" />
@@ -196,16 +201,16 @@
         <a href=''>Accueil</a> <span class='breadcrumb-sep'>/</span> <strong class='breadcrumb-current'>Guide des styles</strong>
     </nav>
     <nav class="Pagination">
-        <strong class='pagination-current'>1</strong> 
-        <a href="#">2</a> 
-        <a href="#">3</a> 
+        <strong class='pagination-current'>1</strong>
+        <a href="#">2</a>
+        <a href="#">3</a>
         <a href="#" class='pagination-next'>&gt;</a>
     </nav>
     <nav class="Pagination">
-        <a href="#" class='pagination-prev'>&lt;</a>
-        <a href="#">1</a> 
-        <strong class='pagination-current'>2</strong> 
-        <a href="#">3</a> 
+        <a href="#" class='pagination-previous'>&lt;</a>
+        <a href="#">1</a>
+        <b class='pagination-current'>2</b>
+        <a href="#">3</a>
         <a href="#" class='pagination-next'>&gt;</a>
     </nav>
 </div>

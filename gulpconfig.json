@@ -55,7 +55,7 @@
         "concatFilename": "app.min.js"
     },
     "clean": {
-        "glob": ["./**/*"]
+        "glob": ["./assets/*", "./views/*", "./*.html"]
     },
     "fontello": {
         "workingDir": "./src/fontello",
@@ -66,7 +66,7 @@
         "workingDir": "./src/views",
         "glob": "./**/*.mustache",
         "compileGlob": "./views/*.mustache",
-        "partialsGlob": "./partials/**/*.mustache",
+        "partialsGlob": "./partials/*.mustache",
         "replaceBase": "./partials/",
         "outputDir": "/views"
     },
