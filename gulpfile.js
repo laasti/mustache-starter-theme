@@ -15,11 +15,10 @@
     });
     plugins.fs = require('fs');
     options.compileDir = require(options.tasksDir+'/compileDir.js')(gulp, plugins, options)();
-
+    
     plugins.data = require(options.tasksDir+'/data.js');
     plugins.partials = require(options.tasksDir+'/partials.js');
-	gulp.task('install', gulp.series(plugins.shell.task(['bower install']), 'bower', 'publish'));
-    gulp.task('serve', gulp.series('publish', task('serve')));
+    
     gulp.task('bower_main_files', task('bower_main'));
     gulp.task('clean', task('clean'));
     gulp.task('bower', gulp.series('bower_main_files', task('bower')));
@@ -28,6 +27,7 @@
     gulp.task('sass', task('sass'));
     gulp.task('js', task('js'));
     gulp.task('inject_bower', task('bower_inject'));
+    gulp.task('require', gulp.series(plugins.shell.task(['bower install '+plugins.yargs.argv.p]), 'inject_bower'));
     gulp.task('inject_assets', task('inject'));
     gulp.task('copy_views', task('views_copy'));
     gulp.task('pages', task('pages'));
@@ -37,6 +37,8 @@
 
     gulp.task('default', gulp.series('build'));
     gulp.task('publish',  gulp.series('build', task('pages')));
+    gulp.task('serve', gulp.series('publish', task('serve')));
+    gulp.task('install', gulp.series(plugins.shell.task(['bower install']), 'bower', 'publish'));
     gulp.task('update',  gulp.series(task('views_clean'), 'update_assets', 'inject_bower', 'inject_assets'));
 
 
