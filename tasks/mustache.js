@@ -12,7 +12,6 @@ module.exports = function (gulp, plugins, opts) {
 
         return gulp.src(opts.views.compileGlob, {root: compile_folder})
                 .pipe(plugins.mustache(data, {extension: ".html"}))
-                .pipe(gulp.dest(compile_folder))
-                .pipe(plugins.browserSync.reload({stream: true}));
+                .pipe(gulp.dest(compile_folder));
     };
 };

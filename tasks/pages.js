@@ -45,7 +45,6 @@ module.exports = function (gulp, plugins, opts) {
                 .pipe(plugins.htmlPrettify({indent_char: ' ', indent_size: 4}))
                 .pipe(plugins.removeEmptyLines())
                 .pipe(plugins.rename({extname:'.html'}))
-                .pipe(gulp.dest(compile_folder))
-                .pipe(plugins.browserSync.reload({stream: true}));
+                .pipe(gulp.dest(compile_folder));
     };
 };

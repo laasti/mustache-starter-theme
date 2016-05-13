@@ -19,46 +19,43 @@
     plugins.data = require(options.tasksDir+'/data.js');
     plugins.partials = require(options.tasksDir+'/partials.js');
     
-    gulp.task('bower_main_files', task('bower_main'));
     gulp.task('clean', task('clean'));
-    gulp.task('bower', gulp.series('bower_main_files', task('bower')));
-    gulp.task('fontello', task('fontello'));
-    gulp.task('images', task('images'));
-    gulp.task('sass', task('sass'));
-    gulp.task('js', task('js'));
-    gulp.task('inject_bower', task('bower_inject'));
-    gulp.task('require', gulp.series(plugins.shell.task(['bower install '+plugins.yargs.argv.p]), 'inject_bower'));
-    gulp.task('inject_assets', task('inject'));
-    gulp.task('copy_views', task('views_copy'));
-    gulp.task('pages', task('pages'));
-    gulp.task('publish_assets', gulp.series('clean', gulp.parallel('images', 'sass', 'bower', 'js', 'copy_views', 'fontello')));
-    gulp.task('update_assets', gulp.parallel('images', 'sass', 'bower', 'js', 'copy_views', 'fontello'));
-    gulp.task('build', gulp.series('publish_assets', 'inject_bower', 'inject_assets'));
+    gulp.task('bower', gulp.series(
+        plugins.shell.task('bower install'),
+        task('bower_publish'),
+        task('bower_inject')
+    ));
+    gulp.task('require', gulp.series(plugins.shell.task(['bower install '+plugins.yargs.argv.p+' --save']), task('bower_publish'), task('bower_inject')));    
+    
+    gulp.task('assets', gulp.series('clean', task('icons'), gulp.parallel(task('bower_publish'), task('images'), task('sass'), task('js'), task('views_copy'))));
+    gulp.task('build', gulp.series('assets', task('bower_inject'), task('inject')));
 
     gulp.task('default', gulp.series('build'));
     gulp.task('publish',  gulp.series('build', task('pages')));
     gulp.task('serve', gulp.series('publish', task('serve')));
-    gulp.task('install', gulp.series(plugins.shell.task(['bower install']), 'bower', 'publish'));
-    gulp.task('update',  gulp.series(task('views_clean'), 'update_assets', 'inject_bower', 'inject_assets'));
+    gulp.task('install', gulp.series('bower', 'publish'));
+    gulp.task('update',  gulp.series(plugins.shell.task('bower update'), 'publish'));
 
 
-    gulp.task('sync', function () {
-        gulp.watch('./src/fontello/**', gulp.parallel('fontello'));
-        gulp.watch('./src/images/**', gulp.parallel('images'));
-        gulp.watch('./src/scss/**', gulp.parallel('sass'));
-        gulp.watch('./src/js/**', gulp.parallel('js'));
-        gulp.watch('./src/views/**', gulp.series('copy_views', 'inject_bower', 'inject_assets'));
-        gulp.watch('./data/**', gulp.parallel('pages'));
-        gulp.watch('./pages/**', gulp.parallel('pages'));
-    });
+    gulp.task('sync', gulp.series('publish', function () {
+        gulp.watch('./src/icons/**', gulp.series(task('icons'), gulp.parallel(task('sass'), task('pages')), plugins.browserSync.reload));
+        gulp.watch('./src/images/**', gulp.series(task('images'), plugins.browserSync.reload));
+        gulp.watch('./src/scss/**', task('sass'));
+        gulp.watch('./src/js/**', gulp.series(task('js'), plugins.browserSync.reload));
+        
+        gulp.watch('./src/views/**', gulp.series(task('views_copy'), task('bower_inject'), task('inject'), plugins.browserSync.reload));
+        gulp.watch('./data/**', gulp.series(task('pages'), plugins.browserSync.reload));
+        gulp.watch('./pages/**', gulp.series(task('pages'), plugins.browserSync.reload));
+    }));
     gulp.task('syncWatch', function () {
-        gulp.watch('./src/fontello/**', gulp.parallel('fontello'));
-        gulp.watch('./src/images/**', gulp.parallel('images'));
-        gulp.watch('./src/scss/**', gulp.parallel('sass'));
-        gulp.watch('./src/js/**', gulp.parallel('js'));
-        gulp.watch('./src/views/**', gulp.series('copy_views', 'inject_bower', 'inject_assets', 'pages'));
-        gulp.watch('./data/**', gulp.parallel('pages'));
-        gulp.watch('./pages/**', gulp.parallel('pages'));
+        gulp.watch('./src/icons/**', gulp.series(task('icons'), gulp.parallel(task('sass'), task('pages')), plugins.browserSync.reload));
+        gulp.watch('./src/images/**', gulp.series(task('images'), plugins.browserSync.reload));
+        gulp.watch('./src/scss/**', task('sass'));
+        gulp.watch('./src/js/**', gulp.series(task('js'), plugins.browserSync.reload));
+        
+        gulp.watch('./src/views/**', gulp.series(task('views_copy'), task('bower_inject'), task('inject'), task('pages'), plugins.browserSync.reload));
+        gulp.watch('./data/**', gulp.series(task('pages'), plugins.browserSync.reload));
+        gulp.watch('./pages/**', gulp.series(task('pages'), plugins.browserSync.reload));
     });
-    gulp.task('watch', gulp.parallel('serve', 'syncWatch'));
+    gulp.task('watch', gulp.series('publish', gulp.parallel('serve', 'syncWatch')));
 }(require));

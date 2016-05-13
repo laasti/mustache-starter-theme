@@ -9,9 +9,9 @@ module.exports = function (gulp, plugins, opts) {
                     return '<script type="text/javascript" src="' + '{{{ assetsUrl }}}'+filepath + '"></script>';
                 };
         return gulp.src(opts.views.glob, {cwd: compile_folder + opts.views.outputDir})
-                .pipe(plugins.inject(gulp.src(opts.inject.js_head.glob, {read: false, cwd: assets_folder, allowEmpty: true}), {name: 'theme-head', transform: js_inject}))
-                .pipe(plugins.inject(gulp.src(opts.inject.js.glob, {read: false, cwd: assets_folder, allowEmpty: true}), {name: 'theme', transform: js_inject}))
-                .pipe(plugins.inject(gulp.src(opts.inject.css.glob, {read: false, cwd: assets_folder, allowEmpty: true}), {name: 'theme', transform: css_inject}))
+                .pipe(plugins.inject(gulp.src(opts.inject.js_head.glob, {read: false, cwd: assets_folder, allowEmpty: true}), {name: 'theme-head', quiet: true, transform: js_inject}))
+                .pipe(plugins.inject(gulp.src(opts.inject.js.glob, {read: false, cwd: assets_folder, allowEmpty: true}), {name: 'theme', quiet: true, transform: js_inject}))
+                .pipe(plugins.inject(gulp.src(opts.inject.css.glob, {read: false, cwd: assets_folder, allowEmpty: true}), {name: 'theme', quiet: true, transform: css_inject}))
                 .pipe(gulp.dest(compile_folder + opts.views.outputDir));
     };
 };

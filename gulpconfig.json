@@ -75,5 +75,13 @@
         "outputDir": "/css",
         "concatFilename": "styles.min.css",
         "browsers": ["last 5 versions", "> 2%", "ie 8", "safari 5"]
+    },
+    "icons":{
+        "glob": "./src/icons/*.svg",
+        "fontName": "icons",
+        "className": "icon",
+        "partialFile": "partials/icons.html",
+        "outputDir": "/fonts",
+        "cssFontPath": "../fonts/"
     }
 }
